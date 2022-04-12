@@ -25,10 +25,10 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
-    with:
-      GOPATH: "${{ env.GOPATH  }}/src/"
     - name: Build
-      run:  go build -v ./../
-
+      run:  |
+        pwd
+        cd ./src && go build -v .
     - name: Test
-      run: go test -v ./../
+      run: |
+        cd ./src/ && go test -v .
